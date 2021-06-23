@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CarousselController;
+use App\Http\Controllers\CarousselItemController;
 use App\Http\Controllers\HeaderController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,3 +33,5 @@ Route::get('/blog', function () {
 });
 
 Route::resource("header",HeaderController::class);
+Route::resource("caroussel",CarousselController::class);
+Route::resource("caroussel_items",CarousselItemController::class);
