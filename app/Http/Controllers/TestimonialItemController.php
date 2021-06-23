@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Testimonial;
+use App\Models\TestimonialItem;
 use Illuminate\Http\Request;
 
-class TestimonialController extends Controller
+class TestimonialItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        $testimonials = Testimonial::all();
-        return view("backoffice.testimonial.all", compact("testimonials"));
+        $testimonialItems = TestimonialItem::all();
+        return view("backoffice.testimonialItem.all", compact("testimonialItems"));
     }
 
     /**
@@ -25,7 +25,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        return view("backoffice.testimonial.create");
+        return view("backoffice.testimonialItem.create");
     }
 
     /**
@@ -36,37 +36,39 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        $testimonial = new Testimonial;
-        $testimonial -> titre = $request -> titre;
-        $testimonial -> image = $request -> image;
-        $testimonial -> created_at = now();
+        $testimonialItem = new TestimonialItem;
+        $testimonialItem -> description = $request -> description;
+        $testimonialItem -> image = $request -> image;
+        $testimonialItem -> nom = $request -> nom;
+        $testimonialItem -> job = $request -> job;
+        $testimonialItem -> created_at = now();
 
-        $testimonial -> save();
+        $testimonialItem -> save();
 
-        return redirect() -> route("testimonials.index");
+        return redirect() -> route("testimonialItems.index");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Testimonial  $testimonial
+     * @param  \App\Models\TestimonialItem  $testimonialItem
      * @return \Illuminate\Http\Response
      */
-    public function show(Testimonial $testimonial)
+    public function show(TestimonialItem $testimonialItem)
     {
-        return view("backoffice.testimonial.show", compact("testimonial"));
+        return view("backoffice.testimonialItem.show", compact("testimonialItem"));
 
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Testimonial  $testimonial
+     * @param  \App\Models\TestimonialItem  $testimonialItem
      * @return \Illuminate\Http\Response
      */
-    public function edit(Testimonial $testimonial)
+    public function edit(TestimonialItem $testimonialItem)
     {
-        return view("backoffice.testimonial.edit", compact("testimonial"));
+        return view("backoffice.testimonialItem.edit", compact("testimonialItem"));
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
     }
 
@@ -74,29 +76,31 @@ class TestimonialController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Testimonial  $testimonial
+     * @param  \App\Models\TestimonialItem  $testimonialItem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Testimonial $testimonial)
+    public function update(Request $request, TestimonialItem $testimonialItem)
     {
-        $testimonial -> titre = $request -> titre;
-        $testimonial -> image = $request -> image;
-        $testimonial -> updated_at = now();
+        $testimonialItem -> description = $request -> description;
+        $testimonialItem -> image = $request -> image;
+        $testimonialItem -> nom = $request -> nom;
+        $testimonialItem -> job = $request -> job;
+        $testimonialItem -> updated_at = now();
 
-        $testimonial -> save();
+        $testimonialItem -> save();
 
-        return redirect() -> route("testimonials.index");
+        return redirect() -> route("testimonialItems.index");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Testimonial  $testimonial
+     * @param  \App\Models\TestimonialItem  $testimonialItem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Testimonial $testimonial)
+    public function destroy(TestimonialItem $testimonialItem)
     {
-        $testimonial -> delete();
+        $testimonialItem -> delete();
 
         return redirect() -> back();
     }

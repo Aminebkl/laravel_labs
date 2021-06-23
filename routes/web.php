@@ -3,6 +3,8 @@
 use App\Http\Controllers\CarousselController;
 use App\Http\Controllers\CarousselItemController;
 use App\Http\Controllers\HeaderController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\TestimonialItemController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,3 +37,5 @@ Route::get('/blog', function () {
 Route::resource("header",HeaderController::class);
 Route::resource("caroussel",CarousselController::class);
 Route::resource("caroussel_items",CarousselItemController::class);
+Route::resource("testimonial",TestimonialController::class);
+Route::resource("testimonial_items",TestimonialItemController::class);
