@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HeaderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,3 +29,5 @@ Route::get('/contact', function () {
 Route::get('/blog', function () {
     return view('blog');
 });
+
+Route::resource("header",HeaderController::class);
