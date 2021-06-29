@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Caroussel extends Model
 {
     use HasFactory;
+    protected $table ="caroussels";
 }

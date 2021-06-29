@@ -91,7 +91,7 @@ class HeaderController extends Controller
 
         $header -> save();
 
-        return redirect() -> route("headers.index");
+        return redirect() -> route("header.index");
     }
 
     /**

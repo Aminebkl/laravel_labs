@@ -14,7 +14,6 @@ class CreateCarousselsTable extends Migration
     public function up()
     {
         Schema::create('caroussels', function (Blueprint $table) {
-            $table->text("image");
             $table->text("description");
             $table->text("logo");
             $table->id();

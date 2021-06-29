@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CarousselItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CarousselItemController extends Controller
 {
@@ -37,8 +38,14 @@ class CarousselItemController extends Controller
     public function store(Request $request)
     {
         $carousselItem = new CarousselItem;
-        $carousselItem -> image1 = $request -> image1;
-        $carousselItem -> image2 = $request -> image2;
+        $request->validate([
+            "image"=> "required",
+        ]);
+        $carousselItem = new CarousselItem();
+
+        $carousselItem->image = $request->file('image')->hashName();
+        $request->file("image")->storePublicly("img","public");
+        $carousselItem -> image = $request -> image;
         $carousselItem -> created_at = now();
 
         $carousselItem -> save();
@@ -79,13 +86,21 @@ class CarousselItemController extends Controller
      */
     public function update(Request $request, CarousselItem $carousselItem)
     {
-        $carousselItem -> image1 = $request -> image1;
-        $carousselItem -> image2 = $request -> image2;
+
+        $request->validate([
+            "image"=> "required",
+        ]);
+        
+        Storage::disk("public")->delete("img/" . $carousselItem->img);
+        $carousselItem->img= $request->file("image")->hasName();
+        $request->file("img")->storePublicly("img","public");
+
+        $carousselItem -> image = $request -> image;
         $carousselItem -> updated_at = now();
 
         $carousselItem -> save();
 
-        return redirect() -> route("carousselItems.index");
+        return redirect() -> route("caroussel_items.index");
     }
 
     /**

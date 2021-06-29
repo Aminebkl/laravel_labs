@@ -14,9 +14,14 @@ class CarousselItemSeeder extends Seeder
      */
     public function run()
     {
-        DB::table("carousssel_items")->insert([
-            "image1" => "01.jpg",
-            "image2" => "02.jpg",
+        DB::table("caroussel_items")->insert([
+            "image" => "01.jpg",
         ]);
+
+        DB::table("caroussel_items")->insert([
+            "image" => "02.jpg",
+        ]);
+
+
     }
 }

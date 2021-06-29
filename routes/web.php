@@ -1,10 +1,15 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CarousselController;
 use App\Http\Controllers\CarousselItemController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TestimonialItemController;
+use App\Models\About;
+use App\Models\Caroussel;
+use App\Models\CarousselItem;
+use App\Models\Header;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,14 +24,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    $header=Header::first();
+    $caroussel=Caroussel::first();
+    $carousselItems=CarousselItem::all();
+    $about=About::first();
+    return view('home', compact("header", "caroussel", "carousselItems", "about"));
 });
 
-Route::get('/services', function () {
+Route::get('/services', function () {                                                                                   
     return view('services');
 });
 
-Route::get('/contact', function () {
+Route::get('/contact', function () { 
     return view('contact');
 });
 
@@ -39,3 +48,4 @@ Route::resource("caroussel",CarousselController::class);
 Route::resource("caroussel_items",CarousselItemController::class);
 Route::resource("testimonial",TestimonialController::class);
 Route::resource("testimonial_items",TestimonialItemController::class);
+Route::resource("about",AboutController::class);
