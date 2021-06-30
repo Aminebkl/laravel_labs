@@ -48,7 +48,7 @@ class AboutController extends Controller
 
         $about -> save();
 
-        return redirect() -> route("abouts.index");
+        return redirect() -> route("about.index");
     }
 
     /**
@@ -94,7 +94,7 @@ class AboutController extends Controller
 
         $about -> save();
 
-        return redirect() -> route("abouts.index");
+        return redirect() -> route("about.index", compact("about"));
     }
 
     /**

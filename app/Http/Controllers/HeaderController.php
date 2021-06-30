@@ -82,16 +82,19 @@ class HeaderController extends Controller
      */
     public function update(Request $request, Header $header)
     {
-        $header -> logo = $request -> logo;
         $header -> item1 = $request -> item1;
         $header -> item2 = $request -> item2;
         $header -> item3 = $request -> item3;
         $header -> item4 = $request -> item4;
         $header -> updated_at = now();
 
+
+        $header->logo = $request->file('logo')->hashName();
+        $request->file('logo')->storePublicly('img', 'public');
         $header -> save();
 
         return redirect() -> route("header.index");
+
     }
 
     /**

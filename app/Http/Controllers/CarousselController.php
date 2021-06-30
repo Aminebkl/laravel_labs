@@ -37,7 +37,6 @@ class CarousselController extends Controller
     public function store(Request $request)
     {
         $caroussel = new Caroussel;
-        $caroussel -> image = $request -> image;
         $caroussel -> description = $request -> description;
         $caroussel -> logo = $request -> logo;
         $caroussel -> created_at = now();
@@ -80,14 +79,13 @@ class CarousselController extends Controller
      */
     public function update(Request $request, Caroussel $caroussel)
     {
-        $caroussel -> image = $request -> image;
         $caroussel -> description = $request -> description;
         $caroussel -> logo = $request -> logo;
         $caroussel -> updated_at = now();
 
         $caroussel -> save();
 
-        return redirect() -> route("caroussels.index");
+        return redirect() -> route("caroussel.index");
     }
 
     /**

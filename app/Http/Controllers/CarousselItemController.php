@@ -91,9 +91,11 @@ class CarousselItemController extends Controller
             "image"=> "required",
         ]);
         
-        Storage::disk("public")->delete("img/" . $carousselItem->img);
-        $carousselItem->img= $request->file("image")->hasName();
-        $request->file("img")->storePublicly("img","public");
+        if ($request->file('image')) {
+            Storage::disk("public")->delete("img/" . $carousselItem->image);
+            $carousselItem->image = $request->file("image")->hashName();
+            $request->file("image")->storePublicly("img", "public");
+        }
 
         $carousselItem -> image = $request -> image;
         $carousselItem -> updated_at = now();
