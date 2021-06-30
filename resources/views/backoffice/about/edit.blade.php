@@ -15,14 +15,14 @@
             </div>
 
             <label class="mt-2" for="description1">
-                description1 :
+                description 1 :
             </label>
             <div class="form-group">
                 <input type="text" class="form-control" value={{ $about->description1 }}  name="description1">
             </div>
 
             <label class="mt-2" for="description2">
-                description2 :
+                description 2 :
             </label>
             <div class="form-group">
                 <input type="text" class="form-control" value={{ $about->description2 }}  name="description2">
