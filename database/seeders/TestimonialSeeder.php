@@ -14,7 +14,7 @@ class TestimonialSeeder extends Seeder
      */
     public function run()
     {
-        DB::table("testimonial")->insert([      
+        DB::table("testimonials")->insert([      
             "titre" => "WHAT OUR CLIENTS SAY",
             "image" => "test-man.png"   
         ]);

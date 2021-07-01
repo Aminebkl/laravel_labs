@@ -14,9 +14,9 @@ class CreateTestimonialsTable extends Migration
     public function up()
     {
         Schema::create('testimonials', function (Blueprint $table) {
+            $table->id();
             $table->string("titre");
             $table->string("image");
-            $table->id();
             $table->timestamps();
         });
     }

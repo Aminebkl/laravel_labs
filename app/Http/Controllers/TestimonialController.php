@@ -85,7 +85,7 @@ class TestimonialController extends Controller
 
         $testimonial -> save();
 
-        return redirect() -> route("testimonials.index");
+        return redirect() -> route("testimonial.index");
     }
 
     /**

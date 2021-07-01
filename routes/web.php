@@ -10,6 +10,7 @@ use App\Models\About;
 use App\Models\Caroussel;
 use App\Models\CarousselItem;
 use App\Models\Header;
+use App\Models\Testimonial;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +29,8 @@ Route::get('/', function () {
     $caroussel=Caroussel::first();
     $carousselItems=CarousselItem::all();
     $about=About::first();
-    return view('home', compact("header", "caroussel", "carousselItems", "about"));
+    $testimonial=Testimonial::first();
+    return view('home', compact("header", "caroussel", "carousselItems", "about", "testimonial"));
 });
 
 Route::get('/services', function () {                                                                                   
